@@ -27,7 +27,7 @@ class configOptions():
         Config = configparser.ConfigParser()
         Config.read("config.ini")
         self.before_date = datetime.datetime.strptime(Config.get('User_Options', 'before_date'), '%m/%d/%Y')
-        self.locations_wanted = Config.get('User_Options', 'locations_wanted').split(',')
+        self.locations_wanted = [x.strip() for x in Config.get('User_Options', 'locations_wanted').split(',')]
         self.wait_between_search_minute = Config.getint('User_Options', 'wait_between_search_minute')
         self.FAST_VERLAST = "" #Config.get('Request_Options', 'FAST_VERLAST')
         self.FAST_VERLAST_SOURCE = ""# Config.get('Request_Options', 'FAST_VERLAST_SOURCE')
